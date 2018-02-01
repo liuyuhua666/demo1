@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyh.dao.EmployeeMapper">
+    <insert id="addEmployee">
+        insert into EMPLOYEE values
+        (EMPLOYEE_SEQ.nextval,#{e_name},#{e_password},#{e_realname},#{e_age},#{e_ethnicity},
+        #{e_phone},#{e_marrige},#{e_address},#{e_hiretime,jdbcType=VARCHAR},#{e_cname},#{e_dname},#{e_jname},
+        #{e_basicwage},#{e_workstarttime,jdbcType=VARCHAR},#{e_workendtime,jdbcType=VARCHAR},
+        #{e_workstatus,jdbcType=VARCHAR})
+    </insert>
+    <update id="updateEmployee">
+        update EMPLOYEE set e_name=#{e_name},e_password=#{e_password},e_realname=#{e_realname},
+        e_age=#{e_age},e_ethnicity=#{e_ethnicity},e_phone=#{e_phone},e_marrige=#{e_marrige},
+        e_address=#{e_address},e_hiretime=#{e_hiretime},e_cname=#{e_cname},e_dname=#{e_dname},
+        e_jname=#{e_jname},e_basicwage=#{e_basicwage},e_workstarttime=#{e_workstarttime},
+        e_workendtime=#{e_workendtime},e_workstatus=#{e_workstatus}
+        where e_id=#{e_id}
+    </update>
+    <select id="findEmployee" resultType="Employee">
+        select * from EMPLOYEE
+        where E_REALNAME=#{e_realname}
+        and e_password=#{e_password}
+    </select>
+    <select id="employeelist" resultType="Employee">
+        select * from EMPLOYEE
+    </select>
+    <select id="findEmployeeById" resultType="com.lyh.model.Employee">
+        select * from EMPLOYEE
+        where E_ID=#{e_id}
+    </select>
+</mapper>

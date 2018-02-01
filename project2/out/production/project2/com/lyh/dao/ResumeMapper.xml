@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyh.dao.ResumeMapper">
+    <insert id="addResume">
+        insert into RESUME values
+        (U_SEQ.nextval,#{r_gid},#{r_name},#{r_age},#{r_ethnicity},#{r_phone},
+        #{r_weight},#{r_marrige},#{r_address},#{r_schoolofgraduation},#{r_selfassessment},
+        #{r_intership},#{r_award},#{r_height})
+    </insert>
+    <update id="updateResumeById">
+        update RESUME set R_NAME=#{r_name},R_AGE=#{r_age},R_ETHNICITY=#{r_ethnicity},
+        R_PHONE=#{r_phone},R_HEIGHT=#{r_height},R_WEIGHT=#{r_weight},R_MARRIGE=#{r_marrige},
+        R_ADDRESS=#{r_address},R_SCHOOLOFGRADUATION=#{r_schoolofgraduation},
+        R_SELFASSESSMENT=#{r_selfassessment},R_INTERSHIP=#{r_intership},R_AWARD=#{r_award}
+        where R_ID=#{r_id}
+    </update>
+    <delete id="deleteResumeById">
+        delete from RESUME where R_ID = #{r_id}
+    </delete>
+    <select id="findResumeByGid" resultType="com.lyh.model.Resume">
+        select * from RESUME
+        where R_GID = #{r_gid}
+    </select>
+    <select id="resumes" resultType="com.lyh.model.Resume">
+        select * from RESUME
+    </select>
+    <select id="findResumeById" resultType="com.lyh.model.Resume">
+        select * from RESUME
+        where R_ID = #{r_id}
+    </select>
+</mapper>

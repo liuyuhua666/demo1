@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyh.dao.PersonalRecruitmentMapper">
+    <insert id="addPersonalRecruitment">
+        insert into PERSONALRECRUITMENT values
+        (PRM_SEQ.nextval,#{prm_cname},#{prm_dname},#{prm_jname},#{prm_money},#{prm_workplace},#{prm_gid})
+    </insert>
+
+    <select id="findPersonalRecruitmentByGid" resultType="com.lyh.model.PersonalRecruitment">
+        select * from PERSONALRECRUITMENT
+        where PRM_GID = #{prm_gid}
+    </select>
+</mapper>

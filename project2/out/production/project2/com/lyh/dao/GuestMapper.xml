@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyh.dao.GuestMapper">
+    <insert id="addGuest">
+        insert into guest
+        values(U_SEQ.nextval,#{g_name},#{g_password},#{g_applicationstatus})
+    </insert>
+    <update id="updateGuestById">
+        update guest set g_password = #{g_password},g_applicationstatus = #{g_applicationstatus}
+        where g_id = #{g_id}
+    </update>
+    <delete id="deleteGuestById">
+        delete from guest where g_id = #{g_id}
+    </delete>
+    <select id="findGuests" resultType="Guest">
+        select * from guest
+    </select>
+    <select id="findGuestById" resultType="Guest">
+        select * from guest where g_id = #{g_id}
+    </select>
+</mapper>
